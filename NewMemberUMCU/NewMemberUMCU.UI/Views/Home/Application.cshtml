@@ -1,0 +1,502 @@
+﻿@model NewMemberUMCU.UI.Models.MemberVM
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/app/createMember.js"></script>
+
+</head>
+<h2>UM Credit Union New Member Application</h2>
+
+    <form id="createMember" form class="form-horizontal" method="post">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>Primary Account Holder</legend>
+
+            <!-- Multiple Radios -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="radios">Account Options</label>
+                <div class="col-md-4">
+                    <div class="radio">
+                        <label for="radios-1">
+                            <input type="radio" name="accountRadios" id="accountRadios-1" value="1">
+                            Individual Account
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label for="radios-2">
+                            <input type="radio" name="accountradios" id="accountRadios-2" value="0">
+                            Joint Account
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <label class="col-md-4 control-label" for="button">Enter Joint Account Information Here! =></label>
+                <div class="form-group">
+                    <!-- Trigger the modal with a button -->
+                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal">Joint Holder</button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h3 class="modal-title">Joint Account Holder</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <h2>Add Joint Account Holder Information:</h2>
+
+                                            <!--TODO pull in the primary account holder's name, etc and display-->
+
+                                            <span style="color: red"></span>
+                                            <div class="form-group">
+                                                <label>First Name</label>
+                                                <input type="text" name="firstName" id="firstName" class="form-control" />
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Last Name</label>
+                                                <input type="text" name="lastName" id="lastName" class="form-control" />
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label>E-Mail</label>
+                                                <input type="email" name="email" id="email" class="form-control" />
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">First Name</label>
+                <div class="col-md-4">
+                    <input id="firstName" name="firstName" type="text" placeholder="First Name" class="form-control input-md" required="">
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Middle</label>
+                <div class="col-md-4">
+                    <input id="middleName" name="middleName" type="text" placeholder="Middle Name or Initial" class="form-control input-md">
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Last Name</label>
+                <div class="col-md-4">
+                    <input id="lastName" name="lastName" type="text" placeholder="Last Name" class="form-control input-md" required="">
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Mother's Maiden Name</label>
+                <div class="col-md-4">
+                    <input id="mmName" name="mmName" type="text" placeholder="Your Mother's Maiden Name" class="form-control input-md" required="">
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Social Security Number</label>
+                <div class="col-md-4">
+                    <input id="ssnumber" name="ssnumber" type="text" placeholder="99999999" class="form-control input-md" required="">
+                </div>
+            </div>
+
+
+            <!-- Date input -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="date">Date of Birth</label>
+                <div class="col-md-4">
+                    <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text" />
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Driver's License or State ID Number</label>
+                <div class="col-md-4">
+                    <input id="dlNumber" name="dlNumber" type="text" placeholder="License or ID number" class="form-control input-md" required="">
+                </div>
+            </div>
+
+            <!--Drop down-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="state">License or ID State</label>
+                <div class="col-md-4">
+                    <select class="form-control" id="idState" name="idState">
+                        <option value="">N/A</option>
+                        <option value="AK">Alaska</option>
+                        <option value="AL">Alabama</option>
+                        <option value="AR">Arkansas</option>
+                        <option value="AZ">Arizona</option>
+                        <option value="CA">California</option>
+                        <option value="CO">Colorado</option>
+                        <option value="CT">Connecticut</option>
+                        <option value="DC">District of Columbia</option>
+                        <option value="DE">Delaware</option>
+                        <option value="FL">Florida</option>
+                        <option value="GA">Georgia</option>
+                        <option value="HI">Hawaii</option>
+                        <option value="IA">Iowa</option>
+                        <option value="ID">Idaho</option>
+                        <option value="IL">Illinois</option>
+                        <option value="IN">Indiana</option>
+                        <option value="KS">Kansas</option>
+                        <option value="KY">Kentucky</option>
+                        <option value="LA">Louisiana</option>
+                        <option value="MA">Massachusetts</option>
+                        <option value="MD">Maryland</option>
+                        <option value="ME">Maine</option>
+                        <option value="MI">Michigan</option>
+                        <option value="MN">Minnesota</option>
+                        <option value="MO">Missouri</option>
+                        <option value="MS">Mississippi</option>
+                        <option value="MT">Montana</option>
+                        <option value="NC">North Carolina</option>
+                        <option value="ND">North Dakota</option>
+                        <option value="NE">Nebraska</option>
+                        <option value="NH">New Hampshire</option>
+                        <option value="NJ">New Jersey</option>
+                        <option value="NM">New Mexico</option>
+                        <option value="NV">Nevada</option>
+                        <option value="NY">New York</option>
+                        <option value="OH">Ohio</option>
+                        <option value="OK">Oklahoma</option>
+                        <option value="OR">Oregon</option>
+                        <option value="PA">Pennsylvania</option>
+                        <option value="PR">Puerto Rico</option>
+                        <option value="RI">Rhode Island</option>
+                        <option value="SC">South Carolina</option>
+                        <option value="SD">South Dakota</option>
+                        <option value="TN">Tennessee</option>
+                        <option value="TX">Texas</option>
+                        <option value="UT">Utah</option>
+                        <option value="VA">Virginia</option>
+                        <option value="VT">Vermont</option>
+                        <option value="WA">Washington</option>
+                        <option value="WI">Wisconsin</option>
+                        <option value="WV">West Virginia</option>
+                        <option value="WY">Wyoming</option>
+                    </select>
+                </div>
+            </div>
+
+            <!--State Picker-->
+            <!-- Multiple Radios -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="radios">Gender </label>
+                <div class="col-md-4">
+                    <div class="radio">
+                        <label for="radios-0">
+                            <input type="radio" name="radios" id="radios-0" value="2" checked="checked">
+                            Female
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label for="radios-1">
+                            <input type="radio" name="radios" id="radios-1" value="3">
+                            Male
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label for="radios-2">
+                            <input type="radio" name="radios" id="radios-2" value="1">
+                            Prefer not to identify
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Occupation</label>
+                <div class="col-md-4">
+                    <input id="occupation" name="occupation" type="text" placeholder="Occupation" class="form-control input-md" required="">
+                </div>
+            </div>
+
+            <!-- Multiple Radios -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="radios">Member Affiliation </label>
+                <div class="col-md-4">
+                    <div class="radio">
+                        <label for="radios-0">
+                            <input type="radio" name="umradios" id="umradios-0" value="1" checked="checked">
+                            UM Student
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label for="radios-1">
+                            <input type="radio" name="umradios" id="umradios-1" value="2">
+                            UM Staff
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label for="radios-2">
+                            <input type="radio" name="umradios" id="umradios-2" value="3">
+                            UM Alumni
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">UserName</label>
+                <div class="col-md-4">
+                    <input id="userName" name="userName" type="text" placeholder="UserName" class="form-control input-md" required="">
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Password</label>
+                <div class="col-md-4">
+                    <input id="password" name="password" type="text" placeholder="Enter a password" class="form-control input-md" required="">
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Enter Your Password Again</label>
+                <div class="col-md-4">
+                    <input id="password" name="password" type="text" placeholder="Re-enter your password" class="form-control input-md" required="">
+                </div>
+            </div>
+
+            <!--The password would be handled totally differently with encryption, etc!-->
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Email</label>
+                <div class="col-md-4">
+                    <input id="email" name="email" type="text" placeholder="Email Address" class="form-control input-md" required="">
+                </div>
+            </div>
+
+            <!--Phone numbers-->
+           
+
+            <h2>Current address</h2>
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Current Address: Street</label>
+                <div class="col-md-4">
+                    <input id="currStreet" name="currStreet" type="text" placeholder="00 Any Street" class="form-control input-md" required="">
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Current Address: City</label>
+                <div class="col-md-4">
+                    <input id="currCity" name="currCity" type="text" placeholder="Ann Arbor" class="form-control input-md" required="">
+                </div>
+            </div>
+
+            <!--Drop down-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="state">Current Address: State</label>
+                <div class="col-md-4">
+                    <select class="form-control" id="currState" name="currState">
+                        <option value="">N/A</option>
+                        <option value="AK">Alaska</option>
+                        <option value="AL">Alabama</option>
+                        <option value="AR">Arkansas</option>
+                        <option value="AZ">Arizona</option>
+                        <option value="CA">California</option>
+                        <option value="CO">Colorado</option>
+                        <option value="CT">Connecticut</option>
+                        <option value="DC">District of Columbia</option>
+                        <option value="DE">Delaware</option>
+                        <option value="FL">Florida</option>
+                        <option value="GA">Georgia</option>
+                        <option value="HI">Hawaii</option>
+                        <option value="IA">Iowa</option>
+                        <option value="ID">Idaho</option>
+                        <option value="IL">Illinois</option>
+                        <option value="IN">Indiana</option>
+                        <option value="KS">Kansas</option>
+                        <option value="KY">Kentucky</option>
+                        <option value="LA">Louisiana</option>
+                        <option value="MA">Massachusetts</option>
+                        <option value="MD">Maryland</option>
+                        <option value="ME">Maine</option>
+                        <option value="MI">Michigan</option>
+                        <option value="MN">Minnesota</option>
+                        <option value="MO">Missouri</option>
+                        <option value="MS">Mississippi</option>
+                        <option value="MT">Montana</option>
+                        <option value="NC">North Carolina</option>
+                        <option value="ND">North Dakota</option>
+                        <option value="NE">Nebraska</option>
+                        <option value="NH">New Hampshire</option>
+                        <option value="NJ">New Jersey</option>
+                        <option value="NM">New Mexico</option>
+                        <option value="NV">Nevada</option>
+                        <option value="NY">New York</option>
+                        <option value="OH">Ohio</option>
+                        <option value="OK">Oklahoma</option>
+                        <option value="OR">Oregon</option>
+                        <option value="PA">Pennsylvania</option>
+                        <option value="PR">Puerto Rico</option>
+                        <option value="RI">Rhode Island</option>
+                        <option value="SC">South Carolina</option>
+                        <option value="SD">South Dakota</option>
+                        <option value="TN">Tennessee</option>
+                        <option value="TX">Texas</option>
+                        <option value="UT">Utah</option>
+                        <option value="VA">Virginia</option>
+                        <option value="VT">Vermont</option>
+                        <option value="WA">Washington</option>
+                        <option value="WI">Wisconsin</option>
+                        <option value="WV">West Virginia</option>
+                        <option value="WY">Wyoming</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- postal-code input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label">Zip / Postal Code</label>
+                <div class="col-md-4">
+                    <input id="currPostal-code" name="currPostal-code" type="text" placeholder="zip or postal code"
+                           class="form-control input-md" required="">
+                    <p class="help-block"></p>
+                </div>
+            </div>
+
+
+            <h2>Permanent Address</h2>
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Permanent Address: Street</label>
+                <div class="col-md-4">
+                    <input id="permStreet" name="permStreet" type="text" placeholder="00 Any Street" class="form-control input-md" required="">
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Permaent Address: City</label>
+                <div class="col-md-4">
+                    <input id="permCity" name="permCity" type="text" placeholder="Your Home Town" class="form-control input-md" required="">
+                </div>
+            </div>
+
+            <!--Drop down-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="state">Permanent Address: State</label>
+                <div class="col-md-4">
+                    <select class="form-control" id="permState" name="permState">
+                        <option value="">N/A</option>
+                        <option value="AK">Alaska</option>
+                        <option value="AL">Alabama</option>
+                        <option value="AR">Arkansas</option>
+                        <option value="AZ">Arizona</option>
+                        <option value="CA">California</option>
+                        <option value="CO">Colorado</option>
+                        <option value="CT">Connecticut</option>
+                        <option value="DC">District of Columbia</option>
+                        <option value="DE">Delaware</option>
+                        <option value="FL">Florida</option>
+                        <option value="GA">Georgia</option>
+                        <option value="HI">Hawaii</option>
+                        <option value="IA">Iowa</option>
+                        <option value="ID">Idaho</option>
+                        <option value="IL">Illinois</option>
+                        <option value="IN">Indiana</option>
+                        <option value="KS">Kansas</option>
+                        <option value="KY">Kentucky</option>
+                        <option value="LA">Louisiana</option>
+                        <option value="MA">Massachusetts</option>
+                        <option value="MD">Maryland</option>
+                        <option value="ME">Maine</option>
+                        <option value="MI">Michigan</option>
+                        <option value="MN">Minnesota</option>
+                        <option value="MO">Missouri</option>
+                        <option value="MS">Mississippi</option>
+                        <option value="MT">Montana</option>
+                        <option value="NC">North Carolina</option>
+                        <option value="ND">North Dakota</option>
+                        <option value="NE">Nebraska</option>
+                        <option value="NH">New Hampshire</option>
+                        <option value="NJ">New Jersey</option>
+                        <option value="NM">New Mexico</option>
+                        <option value="NV">Nevada</option>
+                        <option value="NY">New York</option>
+                        <option value="OH">Ohio</option>
+                        <option value="OK">Oklahoma</option>
+                        <option value="OR">Oregon</option>
+                        <option value="PA">Pennsylvania</option>
+                        <option value="PR">Puerto Rico</option>
+                        <option value="RI">Rhode Island</option>
+                        <option value="SC">South Carolina</option>
+                        <option value="SD">South Dakota</option>
+                        <option value="TN">Tennessee</option>
+                        <option value="TX">Texas</option>
+                        <option value="UT">Utah</option>
+                        <option value="VA">Virginia</option>
+                        <option value="VT">Vermont</option>
+                        <option value="WA">Washington</option>
+                        <option value="WI">Wisconsin</option>
+                        <option value="WV">West Virginia</option>
+                        <option value="WY">Wyoming</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- postal-code input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label">Zip / Postal Code</label>
+                <div class="col-md-4">
+                    <input id="permPostal-code" name="permPostal-code" type="text" placeholder="zip or postal code"
+                           class="form-control input-md" required="">
+                    <p class="help-block"></p>
+                </div>
+            </div>
+
+                    <!-- Submit button -->
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <button class="btn btn-danger " name="submit" type="submit">Submit</button>
+                        </div>
+                    </div>
+
+        </fieldset>
+
+</form>
+
+@section Scripts
+{
+    
+}
+
